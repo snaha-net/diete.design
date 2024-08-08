@@ -919,22 +919,22 @@
 		<Typography variant="h1">Number input (vertical)</Typography>
 		<div class="row">
 			<div class="col">
-				<NumberInput label="Number input" unit="EUR" placeholder="0"
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value={1420}
 					>This is an optional helper text</NumberInput
 				>
-				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420"
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value={1420}
 					>This is an optional helper text</NumberInput
 				>
-				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420" hover
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value={1420} hover
 					>This is an optional helper text</NumberInput
 				>
-				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420" active
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value={1420} active
 					>This is an optional helper text</NumberInput
 				>
-				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420" focus
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value={1420} focus
 					>This is an optional helper text</NumberInput
 				>
-				<NumberInput label="Number input" unit="EUR" placeholder="0" value="1420" disabled
+				<NumberInput label="Number input" unit="EUR" placeholder="0" value={1420} disabled
 					>This is an optional helper text</NumberInput
 				>
 			</div>
@@ -952,14 +952,14 @@
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
-					value="1420">This is an optional helper text</NumberInput
+					value={1420}>This is an optional helper text</NumberInput
 				>
 				<NumberInput
 					layout="horizontal"
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
-					value="1420"
+					value={1420}
 					hover>This is an optional helper text</NumberInput
 				>
 				<NumberInput
@@ -967,7 +967,7 @@
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
-					value="1420"
+					value={1420}
 					active>This is an optional helper text</NumberInput
 				>
 				<NumberInput
@@ -975,7 +975,7 @@
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
-					value="1420"
+					value={1420}
 					focus>This is an optional helper text</NumberInput
 				>
 				<NumberInput
@@ -983,7 +983,7 @@
 					label="Number input"
 					unit="EUR"
 					placeholder="0"
-					value="1420"
+					value={1420}
 					disabled>This is an optional helper text</NumberInput
 				>
 			</div>
