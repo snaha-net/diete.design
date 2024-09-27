@@ -115,6 +115,12 @@
 	input[type='search'] {
 		-moz-appearance: textfield;
 	}
+	input[type='color'] {
+		-webkit-touch-callout: none !important;
+		-webkit-user-select: none !important;
+		-webkit-tap-highlight-color: transparent !important;
+		-moz-user-select: none !important;
+	}
 	input[type='search']::-webkit-search-cancel-button {
 		display: none;
 	}
