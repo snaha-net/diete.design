@@ -11,9 +11,11 @@
 	let {
 		dimension = 'default',
 		disabled,
-		value = $bindable(),
+		value = $bindable(new Date()),
 		...restProps
 	}: Props & HTMLInputAttributes = $props()
+
+	let stringValue = $state(formatDate(value))
 
 	let currentDate = new Date()
 	let selectedMonth = $state(currentDate.getMonth())
@@ -102,7 +104,8 @@
 
 	function selectDate(date: number) {
 		selectedDate = new Date(selectedYear, selectedMonth, date)
-		value = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`
+		value = selectedDate
+		stringValue = formatDate(selectedDate)
 	}
 
 	function isSelected(date: number) {
@@ -126,12 +129,23 @@
 		return new Date(year, month - 1, day)
 	}
 
+	function formatDate(date: Date) {
+		if (!(date instanceof Date) || isNaN(date.getTime())) {
+			return ''
+		}
+		const year = date.getFullYear()
+		const month = String(date.getMonth() + 1).padStart(2, '0')
+		const day = String(date.getDate()).padStart(2, '0')
+		return `${year}-${month}-${day}`
+	}
+
 	function inputChange(event: Event) {
 		const input = event.target as HTMLInputElement
 		const newDate = parseDate(input.value)
 		selectedDate = newDate
 		selectedMonth = newDate.getMonth()
 		selectedYear = newDate.getFullYear()
+		value = newDate
 		showYearPicker = false
 	}
 
@@ -207,7 +221,7 @@
 		{dimension}
 		{disabled}
 		{...restProps}
-		bind:value
+		value={stringValue}
 		oninput={inputChange}
 		{buttons}
 		type="date"
