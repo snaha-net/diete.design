@@ -887,6 +887,35 @@
 		</div>
 	</section>
 	<section>
+		<Typography variant="h1">Search input (hide icon)</Typography>
+		<div class="row">
+			<div class="col">
+				<SearchInput placeholder="Placeholder" hideIcon />
+				<SearchInput value="" hideIcon />
+				<SearchInput value="Diete" hideIcon />
+				<SearchInput disabled hideIcon />
+			</div>
+			<div class="col">
+				<SearchInput dimension="large" placeholder="Placeholder" hideIcon />
+				<SearchInput dimension="large" value="" hideIcon />
+				<SearchInput dimension="large" value="Diete" hideIcon />
+				<SearchInput dimension="large" disabled hideIcon />
+			</div>
+			<div class="col">
+				<SearchInput dimension="compact" placeholder="Placeholder" hideIcon />
+				<SearchInput dimension="compact" value="" hideIcon />
+				<SearchInput dimension="compact" value="Diete" hideIcon />
+				<SearchInput dimension="compact" disabled hideIcon />
+			</div>
+			<div class="col">
+				<SearchInput dimension="small" placeholder="Placeholder" hideIcon />
+				<SearchInput dimension="small" value="" hideIcon />
+				<SearchInput dimension="small" value="Diete" hideIcon />
+				<SearchInput dimension="small" disabled hideIcon />
+			</div>
+		</div>
+	</section>
+	<section>
 		<Typography variant="h1">Search input (with button)</Typography>
 		<div class="row">
 			<div class="col">
