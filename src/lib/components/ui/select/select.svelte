@@ -256,6 +256,7 @@
 		appearance: none;
 		cursor: pointer;
 		border-radius: var(--border-radius);
+		width: 100%;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
 		&.outline {
