@@ -23,6 +23,8 @@
 	import Option from '$lib/components/ui/select/option.svelte'
 	import ComponentTemplate from '$lib/components/custom/component-template.svelte'
 	import CodeComponentTemplate from '$lib/components/custom/code-component-template.svelte'
+	import RadioGroup from '$lib/components/ui/radio-button/radio-group.svelte'
+	import Radio from '$lib/components/ui/radio-button/radio.svelte'
 
 	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay' | 'lightoverlay'
 	type Dimension = 'default' | 'large' | 'compact' | 'small'
@@ -33,6 +35,8 @@
 	let dimension: Dimension = $state('default')
 	let leftIcon: boolean = $state(true)
 	let rightIcon: boolean = $state(false)
+	let withMode: boolean = $state(false)
+	let mode: 'light' | 'dark' = $state('light')
 
 	// Svelte compiler breaks when it finds closing script tag, hence the need to make the template literal to have two parts
 	let useCode = $derived(
@@ -42,7 +46,7 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 </script` +
 			`>
 
-<Button variant="${variant}" dimension="${dimension}">
+<Button variant="${variant}" dimension="${dimension}"${withMode ? ` mode="${mode}` : ''}>
 	${leftIcon ? `<Close/>` : ''}Close${rightIcon ? `<Close/>` : ''}
 </Button>
 `,
@@ -167,10 +171,17 @@ ${leftIcon || rightIcon ? `import { Close } from 'carbon-icons-svelte'` : ''}
 
 	<Switch label="Left icon" bind:checked={leftIcon}></Switch>
 	<Switch label="Right icon" bind:checked={rightIcon}></Switch>
+	<Switch label="With mode" bind:checked={withMode}></Switch>
+	{#if withMode}
+		<RadioGroup bind:value={mode}>
+			<Radio value="light">Light</Radio>
+			<Radio value="dark">Dark</Radio>
+		</RadioGroup>
+	{/if}
 {/snippet}
 
 {#snippet preview()}
-	<Button {variant} {dimension}>
+	<Button {variant} {dimension} mode={withMode ? mode : undefined}>
 		{#if leftIcon}
 			<Close size={24} />
 		{/if}
