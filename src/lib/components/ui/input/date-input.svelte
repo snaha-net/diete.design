@@ -174,15 +174,9 @@
 		}
 	})
 	$effect(() => {
-		const menuButton = document.querySelector('.menu-button-container') as HTMLElement
-		const modeButton = document.querySelector('.dark-mode-button-container') as HTMLElement
 		if (isMobile && showDatePicker) {
-			menuButton.style.zIndex = '1'
-			modeButton.style.zIndex = '1'
 			document.body.style.overflow = 'hidden'
 		} else {
-			menuButton.style.zIndex = '100'
-			modeButton.style.zIndex = '100'
 			document.body.style.overflow = 'auto'
 		}
 	})
@@ -334,7 +328,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 1;
+		z-index: 101;
 		background-color: rgba(0, 0, 0, 0.6);
 		width: 100%;
 		height: 100%;
