@@ -13,7 +13,7 @@
 		User,
 		Edit,
 		TrashCan,
-		Add
+		Add,
 	} from 'carbon-icons-svelte'
 	import Switch from '$lib/components/ui/switch.svelte'
 	import Select from '$lib/components/ui/select/select.svelte'
@@ -91,20 +91,20 @@ ${withIcon ? `import { ChevronDown, Settings, User, Edit } from 'carbon-icons-sv
 
 {#snippet description()}
 	<Typography>
-		Dropdown components provide a way to display a list of options or actions in a compact, 
-		collapsible interface. They are triggered by clicking a button and can contain various types 
-		of content including buttons, links, and other interactive elements.
+		Dropdown components provide a way to display a list of options or actions in a compact,
+		collapsible interface. They are triggered by clicking a button and can contain various types of
+		content including buttons, links, and other interactive elements.
 		<br />
 		<br />
 
-		Dropdowns can be positioned relative to their trigger button using the `up` and `left` 
-		properties to control placement. The `autoClose` property determines whether the dropdown 
+		Dropdowns can be positioned relative to their trigger button using the `up` and `left`
+		properties to control placement. The `autoClose` property determines whether the dropdown
 		automatically closes when an item is selected.
 		<br />
 		<br />
 
-		The component accepts custom button content through the `button` snippet and dropdown 
-		content through the `children` snippet, providing flexibility in design and functionality.
+		The component accepts custom button content through the `button` snippet and dropdown content
+		through the `children` snippet, providing flexibility in design and functionality.
 	</Typography>
 {/snippet}
 
@@ -244,7 +244,14 @@ ${withIcon ? `import { ChevronDown, Settings, User, Edit } from 'carbon-icons-sv
 {/snippet}
 
 {#snippet preview()}
-	<Dropdown buttonVariant={variant} buttonDimension={dimension} {up} {left} {autoClose} mode={withMode ? mode : undefined}>
+	<Dropdown
+		buttonVariant={variant}
+		buttonDimension={dimension}
+		{up}
+		{left}
+		{autoClose}
+		mode={withMode ? mode : undefined}
+	>
 		{#snippet button()}
 			Options
 			{#if withIcon}
@@ -314,9 +321,9 @@ ${withIcon ? `import { ChevronDown, Settings, User, Edit } from 'carbon-icons-sv
 		display: flex;
 		flex-direction: column;
 		gap: 4px;
-		padding: 8px;
-		background: var(--colors-base);
 		border: 1px solid var(--colors-low);
 		border-radius: var(--border-radius);
+		background: var(--colors-base);
+		padding: 8px;
 	}
 </style>
