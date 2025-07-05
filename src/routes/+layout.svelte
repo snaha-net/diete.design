@@ -22,6 +22,7 @@
 		Diète: {
 			'/': 'Intro',
 			'/build': 'Build with Diète',
+			'/customize': 'Customize',
 			'/colors': 'CSS colors',
 			'https://github.com/diete-design/diete.design': 'Github',
 		},
