@@ -1,7 +1,16 @@
 <script lang="ts" module>
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements'
-	type Variant = 'strong' | 'secondary' | 'ghost' | 'solid' | 'darkoverlay' | 'lightoverlay'
-	type Dimension = 'default' | 'large' | 'compact' | 'small'
+	export type Variant =
+		| 'strong'
+		| 'strong-high'
+		| 'strong-green'
+		| 'strong-red'
+		| 'secondary'
+		| 'ghost'
+		| 'solid'
+		| 'darkoverlay'
+		| 'lightoverlay'
+	export type Dimension = 'default' | 'large' | 'compact' | 'small'
 	type Mode = 'light' | 'dark' | 'auto'
 	type ButtonProps = {
 		variant?: Variant
@@ -96,7 +105,9 @@
 		text-decoration: none;
 		white-space: nowrap;
 	}
-
+	a:hover {
+		text-decoration: none;
+	}
 	.leftAlign {
 		justify-content: flex-start;
 	}
@@ -155,6 +166,102 @@
 			&.hover:not(:disabled) {
 				background: var(--colors-high);
 				color: var(--colors-base);
+			}
+
+			&:active:not(:disabled),
+			&.active:not(:disabled) {
+				background: var(--colors-top);
+				color: var(--colors-base);
+			}
+		}
+		&.strong-high {
+			border: 1px solid transparent;
+			background: var(--colors-high);
+			color: var(--colors-light-base);
+
+			&:focus-visible:not(:disabled),
+			&.focus:not(:disabled) {
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
+				background: var(--colors-base);
+				color: var(--colors-top);
+			}
+
+			&:focus-visible:not(:disabled):active,
+			&.focus:not(:disabled).active {
+				outline: none;
+				background: var(--colors-top);
+				color: var(--colors-base);
+			}
+
+			&:hover:not(:disabled),
+			&.hover:not(:disabled) {
+				background: var(--colors-high);
+				color: var(--colors-light-base);
+			}
+
+			&:active:not(:disabled),
+			&.active:not(:disabled) {
+				background: var(--colors-top);
+				color: var(--colors-base);
+			}
+		}
+		&.strong-green {
+			border: 1px solid transparent;
+			background: var(--colors-high-green);
+			color: var(--colors-ultra-low);
+
+			&:focus-visible:not(:disabled),
+			&.focus:not(:disabled) {
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
+				background: var(--colors-base);
+				color: var(--colors-top);
+			}
+
+			&:focus-visible:not(:disabled):active,
+			&.focus:not(:disabled).active {
+				outline: none;
+				background: var(--colors-top);
+				color: var(--colors-base);
+			}
+
+			&:hover:not(:disabled),
+			&.hover:not(:disabled) {
+				background: var(--colors-high-green);
+				color: var(--colors-ultra-low);
+			}
+
+			&:active:not(:disabled),
+			&.active:not(:disabled) {
+				background: var(--colors-top);
+				color: var(--colors-base);
+			}
+		}
+		&.strong-red {
+			border: 1px solid transparent;
+			background: var(--colors-high-red);
+			color: var(--colors-ultra-low);
+
+			&:focus-visible:not(:disabled),
+			&.focus:not(:disabled) {
+				outline: var(--focus-outline);
+				outline-offset: var(--focus-outline-offset);
+				background: var(--colors-base);
+				color: var(--colors-top);
+			}
+
+			&:focus-visible:not(:disabled):active,
+			&.focus:not(:disabled).active {
+				outline: none;
+				background: var(--colors-top);
+				color: var(--colors-base);
+			}
+
+			&:hover:not(:disabled),
+			&.hover:not(:disabled) {
+				background: var(--colors-high-red);
+				color: var(--colors-ultra-low);
 			}
 
 			&:active:not(:disabled),
