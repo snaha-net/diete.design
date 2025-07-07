@@ -7,10 +7,10 @@
 		dimension,
 		disabled,
 		variant = 'outline',
+		value = $bindable(),
 		...restProps
 	}: Props & HTMLInputAttributes = $props()
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
-	let color = $state()
 	let colorInput: HTMLInputElement
 </script>
 
@@ -25,12 +25,12 @@
 			<div class="palette-icon">
 				<ColorPalette {size} />
 			</div>
-			<input type="color" bind:value={color} bind:this={colorInput} />
+			<input type="color" bind:value bind:this={colorInput} />
 		</div>
 	</Button>
 {/snippet}
 
-<Input bind:value={color} {dimension} {disabled} {variant} type="text" {buttons} {...restProps} />
+<Input bind:value {dimension} {disabled} {variant} type="text" {buttons} {...restProps} />
 
 <style lang="postcss">
 	.relative {
