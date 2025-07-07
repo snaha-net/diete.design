@@ -26,6 +26,142 @@
 	let observer: MutationObserver | undefined
 	let isUpdatingFromStore = false
 
+	// Predefined themes
+	const predefinedThemes = [
+		{
+			name: 'Default',
+			description: 'Clean and minimal design',
+			baseColor: '#fefefe',
+			mode: 'system',
+			fontFamily: 'sans-serif',
+			fontSize: 16,
+			padding: 16,
+			borderRadius: 4,
+			focusOutlineWidth: 4,
+		},
+		{
+			name: 'Blue Ocean',
+			description: 'Professional blue theme',
+			baseColor: '#1890ff',
+			mode: 'light',
+			fontFamily: 'sans-serif',
+			fontSize: 16,
+			padding: 16,
+			borderRadius: 6,
+			focusOutlineWidth: 4,
+		},
+		{
+			name: 'Forest Green',
+			description: 'Natural and calming',
+			baseColor: '#52c41a',
+			mode: 'light',
+			fontFamily: 'sans-serif',
+			fontSize: 16,
+			padding: 18,
+			borderRadius: 8,
+			focusOutlineWidth: 3,
+		},
+		{
+			name: 'Sunset Orange',
+			description: 'Warm and energetic',
+			baseColor: '#fa8c16',
+			mode: 'light',
+			fontFamily: 'sans-serif',
+			fontSize: 16,
+			padding: 16,
+			borderRadius: 6,
+			focusOutlineWidth: 4,
+		},
+		{
+			name: 'Royal Purple',
+			description: 'Premium and elegant',
+			baseColor: '#722ed1',
+			mode: 'light',
+			fontFamily: 'serif',
+			fontSize: 17,
+			padding: 20,
+			borderRadius: 8,
+			focusOutlineWidth: 4,
+		},
+		{
+			name: 'Cherry Red',
+			description: 'Bold and attention-grabbing',
+			baseColor: '#f5222d',
+			mode: 'light',
+			fontFamily: 'sans-serif',
+			fontSize: 16,
+			padding: 16,
+			borderRadius: 4,
+			focusOutlineWidth: 5,
+		},
+		{
+			name: 'Dark Mode',
+			description: 'Modern dark interface',
+			baseColor: '#177ddc',
+			mode: 'dark',
+			fontFamily: 'sans-serif',
+			fontSize: 16,
+			padding: 16,
+			borderRadius: 6,
+			focusOutlineWidth: 4,
+		},
+		{
+			name: 'Minimalist',
+			description: 'Ultra-clean with subtle borders',
+			baseColor: '#f0f0f0',
+			mode: 'light',
+			fontFamily: 'sans-serif',
+			fontSize: 15,
+			padding: 12,
+			borderRadius: 2,
+			focusOutlineWidth: 2,
+		},
+		{
+			name: 'Rounded & Soft',
+			description: 'Friendly rounded interface',
+			baseColor: '#13c2c2',
+			mode: 'light',
+			fontFamily: 'sans-serif',
+			fontSize: 16,
+			padding: 20,
+			borderRadius: 12,
+			focusOutlineWidth: 4,
+		},
+		{
+			name: 'Tech Monospace',
+			description: 'Developer-focused theme',
+			baseColor: '#2f54eb',
+			mode: 'light',
+			fontFamily: 'monospace',
+			fontSize: 15,
+			padding: 14,
+			borderRadius: 4,
+			focusOutlineWidth: 3,
+		},
+		{
+			name: 'Vintage Sepia',
+			description: 'Classic and timeless',
+			baseColor: '#d4b106',
+			mode: 'light',
+			fontFamily: 'serif',
+			fontSize: 17,
+			padding: 18,
+			borderRadius: 6,
+			focusOutlineWidth: 4,
+		},
+		{
+			name: 'High Contrast',
+			description: 'Maximum accessibility',
+			baseColor: '#000000',
+			mode: 'light',
+			fontFamily: 'sans-serif',
+			fontSize: 18,
+			padding: 20,
+			borderRadius: 0,
+			focusOutlineWidth: 6,
+		},
+	] as const
+
 	// CSS generation
 	let customCSS = $derived.by(() => {
 		return `/* Custom Diète Design System */
@@ -203,6 +339,19 @@
 		URL.revokeObjectURL(url)
 	}
 
+	// Apply a predefined theme
+	function applyPredefinedTheme(themeConfig: typeof predefinedThemes[0]) {
+		baseColor = themeConfig.baseColor
+		mode = themeConfig.mode as 'light' | 'dark' | 'system'
+		fontFamily = themeConfig.fontFamily
+		fontSize = themeConfig.fontSize
+		padding = themeConfig.padding
+		borderRadius = themeConfig.borderRadius
+		focusOutlineWidth = themeConfig.focusOutlineWidth
+		
+		updateThemeStore()
+	}
+
 	// Update theme store when local values change
 	function updateThemeStore() {
 		if (isUpdatingFromStore) return
@@ -267,6 +416,35 @@
 			defaults.
 		</Typography>
 	</div>
+
+	<section class="section full-width">
+		<Typography variant="h3">Predefined Themes</Typography>
+		<Typography variant="small" class="theme-description">
+			Quick start with professionally designed themes. Click any theme to apply it instantly.
+		</Typography>
+		<div class="theme-grid">
+			{#each predefinedThemes as theme}
+				<div 
+					class="theme-card" 
+					onclick={() => applyPredefinedTheme(theme)}
+					role="button" 
+					tabindex="0"
+					onkeydown={(e) => e.key === 'Enter' && applyPredefinedTheme(theme)}
+				>
+					<div class="theme-preview" style="background-color: {theme.baseColor}"></div>
+					<div class="theme-info">
+						<Typography variant="small" bold>{theme.name}</Typography>
+						<Typography variant="small" class="theme-desc">{theme.description}</Typography>
+						<div class="theme-details">
+							<span class="theme-detail">{theme.mode}</span>
+							<span class="theme-detail">{theme.fontFamily}</span>
+							<span class="theme-detail">{theme.fontSize}px</span>
+						</div>
+					</div>
+				</div>
+			{/each}
+		</div>
+	</section>
 
 	<div class="content">
 		<div class="controls">
@@ -428,6 +606,11 @@
 		margin-bottom: var(--double-padding);
 	}
 
+	.full-width {
+		width: 100%;
+		margin-bottom: var(--double-padding);
+	}
+
 	.form-group {
 		margin-bottom: var(--padding);
 	}
@@ -494,6 +677,76 @@
 		}
 	}
 
+	.theme-description {
+		margin-bottom: var(--padding);
+		opacity: 0.8;
+	}
+
+	.theme-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--half-padding);
+		margin-bottom: var(--padding);
+	}
+
+	.theme-card {
+		flex: 1 1 200px;
+		min-width: 180px;
+		max-width: 250px;
+		border: 1px solid var(--colors-low);
+		border-radius: var(--border-radius);
+		padding: var(--half-padding);
+		cursor: pointer;
+		transition: all 0.2s ease;
+		background: var(--colors-base);
+
+		&:hover {
+			border-color: var(--colors-high);
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			transform: translateY(-2px);
+		}
+
+		&:focus-visible {
+			outline: var(--focus-outline);
+			outline-offset: var(--focus-outline-offset);
+		}
+	}
+
+	.theme-preview {
+		width: 100%;
+		height: 40px;
+		border-radius: calc(var(--border-radius) - 2px);
+		margin-bottom: var(--half-padding);
+		border: 1px solid var(--colors-low);
+	}
+
+	.theme-info {
+		display: flex;
+		flex-direction: column;
+		gap: var(--quarter-padding);
+	}
+
+	.theme-desc {
+		opacity: 0.7;
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
+	}
+
+	.theme-details {
+		display: flex;
+		gap: var(--quarter-padding);
+		flex-wrap: wrap;
+	}
+
+	.theme-detail {
+		background: var(--colors-ultra-low);
+		border: 1px solid var(--colors-low);
+		border-radius: calc(var(--border-radius) / 2);
+		padding: 2px 6px;
+		font-size: var(--font-size-small);
+		color: var(--colors-high);
+	}
+
 	@media (max-width: 768px) {
 		.content {
 			grid-template-columns: 1fr;
@@ -501,6 +754,12 @@
 
 		.customize-page {
 			padding: var(--padding);
+		}
+
+		.theme-card {
+			flex: 1 1 160px;
+			min-width: 140px;
+			max-width: none;
 		}
 	}
 </style>
