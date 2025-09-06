@@ -50,9 +50,11 @@
 </script>
 
 <div class="root {layout} {dimension} {className}">
-	<label class="label" for={labelFor}>
-		{label}
-	</label>
+	{#if label !== ''}
+		<label class="label" for={labelFor}>
+			{label}
+		</label>
+	{/if}
 	{#if children && layout === 'horizontal'}
 		<div class="helper-button">
 			<Information size={dimension === 'small' ? 16 : 24} />
@@ -118,7 +120,6 @@
 	input[type='search']::-webkit-search-cancel-button {
 		display: none;
 	}
-
 	input {
 		font-family: var(--font-family-sans-serif);
 	}
@@ -202,6 +203,7 @@
 		}
 	}
 	.root {
+		flex: 1;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
