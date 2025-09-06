@@ -361,8 +361,8 @@
 				var(--three-quarters-padding);
 		}
 		.unit {
-			top: var(--three-quarters-padding);
-			right: var(--three-quarters-padding);
+			top: calc(var(--three-quarters-padding) + 1px);
+			right: calc(var(--three-quarters-padding) + 1px);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -401,8 +401,8 @@
 				var(--three-quarters-padding);
 		}
 		.unit {
-			top: var(--three-quarters-padding);
-			right: var(--three-quarters-padding);
+			top: calc(var(--three-quarters-padding) + 1px);
+			right: calc(var(--three-quarters-padding) + 1px);
 			font-size: var(--font-size-large);
 			line-height: var(--line-height-large);
 			letter-spacing: var(--letter-spacing-large);
@@ -444,8 +444,8 @@
 			padding: var(--half-padding);
 		}
 		.unit {
-			top: var(--half-padding);
-			right: var(--half-padding);
+			top: calc(var(--half-padding) + 1px);
+			right: calc(var(--half-padding) + 1px);
 			font-size: var(--font-size);
 			line-height: var(--line-height);
 			letter-spacing: var(--letter-spacing);
@@ -484,8 +484,8 @@
 			padding: var(--half-padding);
 		}
 		.unit {
-			top: var(--half-padding);
-			right: var(--half-padding);
+			top: calc(var(--half-padding) + 1px);
+			right: calc(var(--half-padding) + 1px);
 			font-size: var(--font-size-small);
 			line-height: var(--line-height-small);
 			letter-spacing: var(--letter-spacing-small);
