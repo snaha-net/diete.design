@@ -202,6 +202,7 @@
 		}
 	}
 	.root {
+		flex: 1;
 		gap: 0.5rem;
 		color: var(--colors-ultra-high);
 		font-family: var(--font-family-sans-serif);
@@ -272,6 +273,7 @@
 		input {
 			flex-grow: 1;
 			border-radius: var(--border-radius);
+			width: 100%;
 			color: var(--colors-ultra-high);
 			&::placeholder {
 				opacity: 0.5;
