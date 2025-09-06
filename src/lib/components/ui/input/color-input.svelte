@@ -11,7 +11,7 @@
 	}: Props & HTMLInputAttributes = $props()
 	let size: 16 | 24 | 32 = $derived(dimension === 'large' ? 32 : dimension === 'small' ? 16 : 24)
 	let color = $state()
-	let colorInput: HTMLInputElement
+	let colorInput: HTMLLabelElement
 </script>
 
 {#snippet buttons()}
@@ -25,7 +25,7 @@
 			<div class="palette-icon">
 				<ColorPalette {size} />
 			</div>
-			<input type="color" bind:value={color} bind:this={colorInput} />
+			<label bind:this={colorInput}><input type="color" bind:value={color} /></label>
 		</div>
 	</Button>
 {/snippet}
@@ -43,7 +43,6 @@
 	}
 	input[type='color'] {
 		appearance: none;
-		visibility: hidden;
 		cursor: pointer;
 		border: none;
 		background-color: var(--colors-top);
