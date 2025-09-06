@@ -21,6 +21,7 @@
 		buttons?: Snippet<[HTMLInputElement]>
 		variant?: Variant
 		iconStart?: Snippet
+		hideIcon?: boolean
 	}
 </script>
 
@@ -36,6 +37,7 @@
 		error,
 		hover,
 		iconStart,
+		hideIcon = false,
 		active,
 		focus,
 		type,
@@ -79,7 +81,7 @@
 					<label for={labelFor} class="date-wrapper"></label>
 				{/if}
 				{#if iconStart}
-					<label for={labelFor} class="start-icon">
+					<label for={labelFor} class="start-icon" class:hideIcon>
 						{@render iconStart()}
 					</label>
 				{/if}
@@ -317,8 +319,14 @@
 				outline: 2px solid var(--colors-top);
 				outline-offset: -2px;
 			}
+			&:not(:placeholder-shown) {
+				& ~ .hideIcon {
+					display: none;
+				}
+			}
 		}
 	}
+
 	.start-icon {
 		display: flex;
 		position: absolute;
@@ -340,6 +348,11 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: 44px;
+			}
+		}
+		&:has(.hideIcon) {
+			input:not(:placeholder-shown) {
+				padding-left: var(--three-quarters-padding);
 			}
 		}
 		.label {
@@ -376,6 +389,13 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: 52px;
+			}
+		}
+		&:has(.hideIcon) {
+			&:has(.hideIcon) {
+				input:not(:placeholder-shown) {
+					padding-left: var(--three-quarters-padding);
+				}
 			}
 		}
 		.label {
@@ -423,6 +443,11 @@
 				padding-left: 40px;
 			}
 		}
+		&:has(.hideIcon) {
+			input:not(:placeholder-shown) {
+				padding-left: var(--half-padding);
+			}
+		}
 		.label {
 			font-size: var(--font-size);
 			line-height: var(--line-height);
@@ -459,6 +484,13 @@
 		&:has(.start-icon) {
 			input {
 				padding-left: var(--double-padding);
+			}
+		}
+		&:has(.hideIcon) {
+			&:has(.hideIcon) {
+				input:not(:placeholder-shown) {
+					padding-left: var(--half-padding);
+				}
 			}
 		}
 		.label {
